@@ -1,5 +1,6 @@
 import { Car } from "./Models/Car.js"
 import { House } from "./Models/House.js"
+import { Job } from "./Models/Job.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 
@@ -16,6 +17,11 @@ class AppState extends EventEmitter {
     new House({ price: 400000, address: '7289 N Glassroad rd', city: 'Nampa ID', year: 2005, size: 1400, bedroom: 3, bathroom: 2, imgUrl: 'https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2019/2/7/3/BP_HHMTN310_Bolden_home-exterior_AFTER_0132.jpg.rend.hgtvcom.966.644.suffix/1549585070420.jpeg' }),
     new House({ price: 800000, address: '365 E Fancyroad st', city: 'Eagle ID', year: 2019, size: 2600, bedroom: 5, bathroom: 3, imgUrl: 'https://media.istockphoto.com/photos/single-family-new-construction-home-in-suburb-neighborhood-in-the-picture-id1147674294?k=20&m=1147674294&s=612x612&w=0&h=7eSceNNA1USRkMbTM6DXPl7UGB1kRvHHcdB-tehn4SQ=' })
   ]
+
+  jobs = [
+    new Job({ title: 'Store Manager', pay: 50000, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti ad ipsam voluptates unde saepe, eaque autem expedita, repellat incidunt dolor.', company: 'Target', salary: true})
+  ]
+
 }
 
 export const ProxyState = new Proxy(new AppState(), {
