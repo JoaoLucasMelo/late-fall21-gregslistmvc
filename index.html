@@ -22,7 +22,11 @@
           src="129934248-fe999e3e-b167-485c-9457-663c95329182-removebg-preview.png" alt="">
       </a>
       <!-- Button trigger modal -->
-      <button title='create car' type="button" class="btn btn-success me-3 visually-hidden" data-bs-toggle="modal"
+      <button title='post car' type="button" class="btn btn-success me-3 visually-hidden" data-bs-toggle="modal"
+        data-bs-target="#form-modal" id="form-button">
+        <i class="mdi mdi-plus"></i>
+      </button>
+      <button title='post house' type="button" class="btn btn-success me-3 visually-hidden" data-bs-toggle="modal"
         data-bs-target="#form-modal" id="form-button">
         <i class="mdi mdi-plus"></i>
       </button>
@@ -32,7 +36,7 @@
     <div class="row flex-grow-1">
       <div class="col-1 bg-secondary text-light pt-5 text-center">
         <p class="selectable p-2" onclick="app.carsController.showCars()">Cars</p>
-        <p class="selectable p-2">Houses</p>
+        <p class="selectable p-2" onclick="app.housesController.showHouses()">Houses</p>
         <p class="selectable p-2">Jobs</p>
       </div>
       <div class="col-11">
@@ -63,7 +67,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modal-title-slot">Create Listing</h5>
+          <h5 class="modal-title" id="modal-title-slot">Post Listing</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="modal-body-slot">
