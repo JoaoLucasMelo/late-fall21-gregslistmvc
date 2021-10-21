@@ -36,7 +36,6 @@ createHouse() {
 formElem.reset()
 bootstrap.Modal.getInstance(document.getElementById('form-modal')).toggle()
 }
-
 showHouses(){
 _drawHouses()
 document.getElementById('form-button').classList.remove('visually-hidden')

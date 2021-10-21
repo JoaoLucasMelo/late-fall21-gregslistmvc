@@ -19,7 +19,8 @@ class AppState extends EventEmitter {
   ]
 
   jobs = [
-    new Job({ title: 'Store Manager', pay: 50000, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti ad ipsam voluptates unde saepe, eaque autem expedita, repellat incidunt dolor.', company: 'Target', salary: true})
+    new Job({ title: 'Store Manager', pay: 50000, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti ad ipsam voluptates unde saepe, eaque autem expedita, repellat incidunt dolor.', company: 'Target', salary: true}),
+    new Job({ title: 'Clerk', pay: 25000, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit repellat incidunt dolor.', company: 'Stinker', salary: false})
   ]
 
 }

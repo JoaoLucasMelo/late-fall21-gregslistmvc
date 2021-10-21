@@ -14,13 +14,6 @@ createHouse(houseData) {
 
 
 
-
-
-
-
-
-
-
 }
 
 

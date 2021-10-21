@@ -1,6 +1,8 @@
-export class Job {
+import { generateId } from "../Utils/generateId.js"
 
+export class Job {
 constructor(data){
+this.id = generateId()
 this.title = data.title
 this.pay = data.pay
 this.salary = data.salary
@@ -8,9 +10,30 @@ this.description = data.description
 this.company = data.company
 }
 
+get Template() {
+  return `
+  <div class="col-12 mt-3">
+    <div class="bg-light elevation-1 rounded">
+      <div class="p-3">
+        <p class=""><b>Job Title: ${this.title}</b></p>
+        <p class="f-10">Company: ${this.company}</p>
+        <div>
+          <p>Description: ${this.description}</p>
+        </div>
+        <div class="d-flex justify-content-between">
+           <p class="m-0"><em>Payment: ${this.pay}</em></p>
+           <div class="">
+           <button title="delete job" class='btn btn-danger justify-self-end p-1'
+            onclick="app.jobsController.deleteJobs('${this.id}')"><i class='mdi mdi-delete'></i></button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  `
 
 
 // ${this.salary == true ? "salary": "hourly"}
 
-
+}
 }
