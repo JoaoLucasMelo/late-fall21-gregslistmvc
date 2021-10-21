@@ -1,6 +1,9 @@
+import { ProxyState } from "../AppState.js"
 import { jobsService } from "../Services/JobsServices.js"
 
-_drawJobs(){
+
+
+function _drawJobs(){
   const jobs = ProxyState.jobs
   let template = ''
   jobs.forEach(job => template += job.Template)
@@ -18,7 +21,7 @@ export class JobsController {
 showJobs(){
   _drawJobs()
   document.getElementById('form-button').classList.remove('visually-hidden')
-  document.getElementById('modal-body-slot').innerHTML = getJobForm()
+  // document.getElementById('modal-body-slot').innerHTML = getJobForm()
 }
 createHouse() {
   window.event.preventDefault()
