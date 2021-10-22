@@ -22,28 +22,30 @@
           src="129934248-fe999e3e-b167-485c-9457-663c95329182-removebg-preview.png" alt="">
       </a>
       <!-- Button trigger modal -->
-      <button title='post car' type="button" class="btn btn-success me-3 visually-hidden" data-bs-toggle="modal"
+      <button title='post car' type="button" class="btn me-5 btn-secondary visually-hidden" data-bs-toggle="modal"
         data-bs-target="#form-modal" id="form-button">
-        <i class="mdi mdi-plus"></i>
-      </button>
-      <button title='post house' type="button" class="btn btn-success me-3 visually-hidden" data-bs-toggle="modal"
-        data-bs-target="#form-modal" id="form-button">
-        <i class="mdi mdi-plus"></i>
+        <div class="d-flex flex-row align-content-center ">
+          <p class="m-0"><b>Post Listing</b></p><i class="mdi mdi-plus">
+          </i>
+        </div>
       </button>
     </nav>
   </header>
   <main class="container-fluid d-flex flex-column">
-    <div class="row flex-grow-1">
-      <div class="col-1 bg-secondary text-dark pt-5 text-center">
-        <p class="selectable p-2 border shadow" onclick="app.carsController.showCars()">Cars</p>
-        <p class="selectable p-2 border shadow" onclick="app.housesController.showHouses()">Houses</p>
-        <p class="selectable p-2 border shadow" onclick="app.jobsController.showJobs()">Jobs</p>
+    <div class="row flex-grow-1 menuflex">
+      <div class="col-md-2  bg-secondary d-flex flex-column align-items-center text-dark pt-5 text-center">
+        <p class="buttonanim p-2 mb-3 border shadow" onclick="app.carsController.showCars()"><span>Cars</span></p>
+        <p class="buttonanim p-2 mb-3 border shadow" onclick="app.housesController.showHouses()"><span>Houses</span>
+        </p>
+        <p class="buttonanim p-2 mb-3 border lowerbutton shadow" onclick="app.jobsController.showJobs()">
+          <span>Jobs</span>
+        </p>
       </div>
-      <div class="col-11 bg-light ">
-        <div class="row  mt-2" id='listings'>
+      <div class="col-md-10 bg-light ">
+        <div class="row mt-2" id='listings'>
           <div>
-            <img src="129934248-fe999e3e-b167-485c-9457-663c95329182-removebg-preview - Copy.png" width="950"
-              height="250" alt="">
+            <img class="backgroundpic" src="129934248-fe999e3e-b167-485c-9457-663c95329182-removebg-preview - Copy.png"
+              width="950" height="250" alt="">
           </div>
           <!-- <div class="  text-center">
             <h2>Welcome To GregsList Please Select A Category</h2>
@@ -82,7 +84,7 @@
   </div>
   <footer class="bg-dark text-light">
     <div class="text-center no-select">
-      <p><small>Made with 💖 by Codeworks</small></p>
+      <p><small>Made with 💖 by John Melo | Codeworks</small></p>
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"

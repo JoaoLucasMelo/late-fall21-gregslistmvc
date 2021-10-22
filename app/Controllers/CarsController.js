@@ -1,6 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { getCarForm } from "../Forms/Carform.js"
 import { carsService } from "../Services/CarsService.js"
+import { loadStateCars, saveStateCars } from "../Utils/LocalStorage.js";
 
 function _drawCars() {
   const cars = ProxyState.cars
@@ -9,12 +10,15 @@ function _drawCars() {
   cars.forEach(car => template += car.Template)
   // add to page
   document.getElementById('listings').innerHTML = template
+
 }
 
 
 export class CarsController {
   constructor() {
     ProxyState.on('cars', _drawCars)
+    ProxyState.on('cars', saveStateCars)
+
     // draw default cars
     // _drawCars()
   }
@@ -51,5 +55,6 @@ export class CarsController {
     _drawCars()
     document.getElementById('form-button').classList.remove('visually-hidden')
     document.getElementById('modal-body-slot').innerHTML = getCarForm()
+    loadStateCars()
   }
 }

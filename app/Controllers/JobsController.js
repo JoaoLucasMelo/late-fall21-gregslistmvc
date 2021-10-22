@@ -1,6 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { jobsService } from "../Services/JobsServices.js"
 import { getJobForm } from "../Forms/Jobform.js"
+import { loadStateJobs, saveStateJobs } from "../Utils/LocalStorage.js";
 
 
 
@@ -18,6 +19,8 @@ export class JobsController {
 
   constructor(){
     ProxyState.on('jobs', _drawJobs)
+    ProxyState.on('jobs', saveStateJobs)
+
   
   }
 
@@ -25,6 +28,7 @@ export class JobsController {
 showJobs(){
   _drawJobs()
   document.getElementById('form-button').classList.remove('visually-hidden')
+
   // document.getElementById('modal-body-slot').innerHTML = getJobForm()
 }
 createJob() {
@@ -36,6 +40,7 @@ createJob() {
     title: formElem.title.value,
     pay: formElem.pay.value,
     description: formElem.description.value,
+    salary: formElem.salary.value,
     company: formElem.company.value
   }
 
@@ -48,10 +53,10 @@ showJobs(){
   _drawJobs()
   document.getElementById('form-button').classList.remove('visually-hidden')
   document.getElementById('modal-body-slot').innerHTML = getJobForm()
+  loadStateJobs()
   }
   
   deleteJobs(id){
-    console.log(id)
   jobsService.deleteJobs(id)
   }
 

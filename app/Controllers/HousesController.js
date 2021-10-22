@@ -1,6 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { getHouseForm } from "../Forms/Houseform.js"
 import { housesService } from "../Services/HousesService.js"
+import { loadStateHouses, saveStateHouses } from "../Utils/LocalStorage.js";
 
 
 function _drawHouses() {
@@ -8,12 +9,14 @@ function _drawHouses() {
   let template = ''
   houses.forEach(house => template += house.Template)
   document.getElementById('listings').innerHTML = template
+
   
 }
 
 export class HousesController {
 constructor(){
   ProxyState.on('houses', _drawHouses)
+  ProxyState.on('houses', saveStateHouses)
 
 }
 
@@ -40,10 +43,15 @@ showHouses(){
 _drawHouses()
 document.getElementById('form-button').classList.remove('visually-hidden')
 document.getElementById('modal-body-slot').innerHTML = getHouseForm()
+loadStateHouses()
 }
 
 deleteHouses(id){
-  console.log(id)
 housesService.deleteHouses(id)
 }
+
+
+
+
+
 }

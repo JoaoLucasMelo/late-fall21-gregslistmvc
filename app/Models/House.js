@@ -18,7 +18,7 @@ get Template() {
   return `
   <div class="col-md-3 mt-3">
     <div class="bg-light elevation-1 rounded">
-      <img width="100%" class="car-img rounded-top" src="${this.imgUrl}" alt="car image">
+      <img width="100%" class="house-img rounded-top" src="${this.imgUrl}" alt="house image">
       <div class="p-3">
         <p class="text-center"><b>${this.address}</b></p>
         <p class="f-10 text-center">City: ${this.city} | Year Built: ${this.year}</p>

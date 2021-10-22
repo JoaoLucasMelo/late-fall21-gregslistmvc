@@ -1,4 +1,68 @@
 /* BASIC STYLES HERE */
-.backgroundpic{
-background-image: url("129934248-fe999e3e-b167-485c-9457-663c95329182-removebg-preview - Copy.png") !important;
+
+
+
+
+.buttonanim {
+  border-radius: 4px;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 22px;
+  padding: 20px;
+  width: 22vh;
+  height: 52px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
 }
+
+.buttonanim span {
+  cursor: pointer;
+  display: inline-flex;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttonanim span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buttonanim:hover span {
+  padding-right: 25px;
+}
+
+.buttonanim:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+@media only screen and (max-width: 750px) {
+
+  .buttonanim {
+
+    width: 50vh;
+    height: 52px;
+  }
+
+  .backgroundpic{
+    flex: auto;
+width: 100%;
+height: auto;
+    }
+
+.menuflex{
+  flex-grow: 0 !important;
+}
+
+.lowerbutton {
+  margin-bottom: 2em !important;
+}
+
+
+  }
