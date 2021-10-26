@@ -1,7 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { jobsService } from "../Services/JobsServices.js"
 import { getJobForm } from "../Forms/Jobform.js"
-import { loadStateJobs, saveStateJobs } from "../Utils/LocalStorage.js";
+// import { loadStateJobs, saveStateJobs } from "../Utils/LocalStorage.js";
 
 
 
@@ -19,46 +19,67 @@ export class JobsController {
 
   constructor(){
     ProxyState.on('jobs', _drawJobs)
-    ProxyState.on('jobs', saveStateJobs)
 
   
   }
 
 
-showJobs(){
-  _drawJobs()
+async showJobs(){
+  try{
+    await jobsService.getAllJobs()
   document.getElementById('form-button').classList.remove('visually-hidden')
+  document.getElementById('modal-body-slot').innerHTML = getJobForm()
+  } catch (error) {
 
-  // document.getElementById('modal-body-slot').innerHTML = getJobForm()
+  }
 }
-createJob() {
+
+async createJob(id) {
+  try{
   window.event.preventDefault()
   /** @type {HTMLFormElement} */
 
   const formElem = window.event.target
   const jobData = {
-    title: formElem.title.value,
-    pay: formElem.pay.value,
+    jobTitle: formElem.jobTitle.value,
+    hours: formElem.hours.value,
     description: formElem.description.value,
-    salary: formElem.salary.value,
+    rate: formElem.rate.value,
     company: formElem.company.value
   }
+if (id) {
 
-  jobsService.createJob(jobData)
+  await jobsService.editJob(jobData, id)
+} else {
+  await jobsService.createJob(jobData)
+}
 
 formElem.reset()
 bootstrap.Modal.getInstance(document.getElementById('form-modal')).toggle()
+} catch (error) {
+  console.error("[CREATE ERROR]", error.message)
 }
-showJobs(){
-  _drawJobs()
+}
+
+openCreateModal(){
   document.getElementById('form-button').classList.remove('visually-hidden')
   document.getElementById('modal-body-slot').innerHTML = getJobForm()
-  loadStateJobs()
-  }
+}
   
-  deleteJobs(id){
-  jobsService.deleteJobs(id)
+async openEditModal(id){
+
+const job = ProxyState.jobs.find(j=> j.id == id)
+document.getElementById('modal-body-slot').innerHTML = getJobForm(job)
+bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal')).toggle()
+}
+
+ async deleteJobs(id){
+   try{
+  await jobsService.deleteJobs(id)
+  } catch(error) {
+    console.error("[DELETE ERROR]", error.message)
   }
+}
 
   logo(){
     document.getElementById('form-button').classList.add('visually-hidden')

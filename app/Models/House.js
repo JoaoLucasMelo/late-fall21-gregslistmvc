@@ -1,17 +1,15 @@
 
-import { generateId } from "../Utils/generateId.js"
 export class House {
 
 constructor(data){
-this.id = generateId()
-this.price = data.price
-this.address = data.address
-this.city = data.city
-this.year = data.year
-this.size = data.size
-this.bedroom = data.bedroom
-this.bathroom = data.bathroom
-this.imgUrl = data.imgUrl
+this.id = data.id
+this.price = data.price || 1
+this.description = data.description || ''
+this.levels = data.levels || 1
+this.year = data.year || ''
+this.bedrooms = data.bedrooms || 1
+this.bathrooms = data.bathrooms || 1
+this.imgUrl = data.imgUrl || ''
 
 }
 get Template() {
@@ -20,15 +18,16 @@ get Template() {
     <div class="bg-light elevation-1 rounded">
       <img width="100%" class="house-img rounded-top" src="${this.imgUrl}" alt="house image">
       <div class="p-3">
-        <p class="text-center"><b>${this.address}</b></p>
-        <p class="f-10 text-center">City: ${this.city} | Year Built: ${this.year}</p>
+        <p class="f-10 text-center"> Year Built: ${this.year}</p>
         <div>
-        <p>Size: ${this.size}sq ft |  Bedrooms: ${this.bedroom}  |  Bathrooms: ${this.bathroom}</p>
+        <p>Levels: ${this.levels}  <br>  Bedrooms: ${this.bedrooms}  <br>  Bathrooms: ${this.bathrooms}</p>
         </div>
+        <p>Description: ${this.description}</p>
         <div class="d-flex">
           <p class="m-0"><em>Price: $${this.price}</em></p>
           </div>
           <div class="text-end">
+          <button title="edit house" class='btn btn-primary justify-self-end p-1' onclick="app.housesController.openEditModal('${this.id}')"><i class='mdi mdi-pencil'></i></button>
           <button title="delete house" class='btn btn-danger justify-self-end p-1' onclick="app.housesController.deleteHouses('${this.id}')"><i class='mdi mdi-delete'></i></button>
           </div>
       </div>
