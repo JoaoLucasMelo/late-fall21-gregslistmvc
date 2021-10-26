@@ -22,13 +22,15 @@
           src="129934248-fe999e3e-b167-485c-9457-663c95329182-removebg-preview.png" alt="">
       </a>
       <!-- Button trigger modal -->
-      <button title='post car' type="button" class="btn me-5 btn-secondary visually-hidden" data-bs-toggle="modal"
-        data-bs-target="#form-modal" id="form-button">
-        <div class="d-flex flex-row align-content-center ">
-          <p class="m-0"><b>Post Listing</b></p><i class="mdi mdi-plus">
-          </i>
-        </div>
-      </button>
+      <div id="buttonchange">
+        <button title='post car' type="button" onclick="app.carsController.openCreateModal()"
+          class="btn me-5 btn-secondary visually-hidden" id="form-button">
+          <div class="d-flex flex-row align-content-center ">
+            <p class="m-0"><b>Post Listing</b></p><i class="mdi mdi-plus">
+            </i>
+          </div>
+        </button>
+      </div>
     </nav>
   </header>
   <main class="container-fluid d-flex flex-column">

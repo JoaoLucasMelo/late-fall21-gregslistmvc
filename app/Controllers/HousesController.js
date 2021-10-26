@@ -20,9 +20,16 @@ constructor(){
 }
 
 async showHouses(){
+  document.getElementById('buttonchange').innerHTML = `<button title='post car' type="button" onclick="app.housesController.openCreateModal()"
+  class="btn me-5 btn-secondary visually-hidden" id="form-button1">
+  <div class="d-flex flex-row align-content-center ">
+    <p class="m-0"><b>Post Listing</b></p><i class="mdi mdi-plus">
+    </i>
+  </div>
+</button>`
 try{
   await housesService.getAllHouses()
-  document.getElementById('form-button').classList.remove('visually-hidden')
+  document.getElementById('form-button1').classList.remove('visually-hidden')
   document.getElementById('modal-body-slot').innerHTML = getHouseForm()
 } catch (error){
 
@@ -50,7 +57,7 @@ if (id){
 
 
 formElem.reset()
-bootstrap.Modal.getInstance(document.getElementById('form-modal')).toggle()
+bootstrap.Modal.getInstance(document.getElementById('form-modal1')).toggle()
 } catch (error) {
   console.error("[CREATE ERROR]", error.message)
 }
@@ -58,13 +65,13 @@ bootstrap.Modal.getInstance(document.getElementById('form-modal')).toggle()
 
 openCreateModal(){
   document.getElementById('modal-body-slot').innerHTML = getHouseForm(house)
-  bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal')).toggle()
+  bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal1')).toggle()
 }
 
 async openEditModal(id) {
   const house = ProxyState.houses.find(c => c.id == id)
   document.getElementById('modal-body-slot').innerHTML = getHouseForm(house)
-  bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal')).toggle()
+  bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal1')).toggle()
 }
 
 

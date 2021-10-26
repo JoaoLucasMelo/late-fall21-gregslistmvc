@@ -18,6 +18,13 @@ export class CarsController {
   }
 
   async showCars() {
+    document.getElementById('buttonchange').innerHTML = `<button title='post car' type="button" onclick="app.carsController.openCreateModal()"
+    class="btn me-5 btn-secondary visually-hidden" id="form-button">
+    <div class="d-flex flex-row align-content-center ">
+      <p class="m-0"><b>Post Listing</b></p><i class="mdi mdi-plus">
+      </i>
+    </div>
+  </button>`
     try {
       await carsService.getAllCars()
       document.getElementById('form-button').classList.remove('visually-hidden')
