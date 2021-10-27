@@ -17,7 +17,13 @@ class JobsService {
     ProxyState.jobs = [...ProxyState.jobs, job]
     
   }
-  
+  async editJob(jobData, id) {
+
+    const res = await sandboxApi.put('jobs/' + id, jobData)
+    const index = ProxyState.jobs.findIndex(j => j.id == id)
+    ProxyStatejobs.splice(index, 1, new Job(res.data))
+    ProxyStatejobs = ProxyStatejobs
+  }
   
   async deleteJobs(id){
     await sandboxApi.delete('jobs/' + id)
@@ -25,18 +31,7 @@ class JobsService {
   }
 
 
-
-
-
-
 }
-
-
-
-
-
-
-
 
 
 

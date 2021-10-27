@@ -25,8 +25,8 @@ export class JobsController {
 
 
 async showJobs(){
-  document.getElementById('buttonchange').innerHTML = `<button title='post car' type="button" onclick="app.jobsController.openCreateModal()"
-  class="btn me-5 btn-secondary visually-hidden" id="form-button2">
+  document.getElementById('buttonchange').innerHTML = `<button title='post job' type="button" onclick="app.jobsController.openCreateModal()"
+  class="btn me-5 btn-secondary visually-hidden" id="form-button">
   <div class="d-flex flex-row align-content-center ">
     <p class="m-0"><b>Post Listing</b></p><i class="mdi mdi-plus">
     </i>
@@ -35,7 +35,7 @@ async showJobs(){
   try{
     await jobsService.getAllJobs()
 
-  document.getElementById('form-button2').classList.remove('visually-hidden')
+  document.getElementById('form-button').classList.remove('visually-hidden')
   document.getElementById('modal-body-slot').innerHTML = getJobForm()
   } catch (error) {
 
@@ -64,7 +64,7 @@ if (id) {
 }
 
 formElem.reset()
-bootstrap.Modal.getInstance(document.getElementById('form-modal2')).toggle()
+bootstrap.Modal.getInstance(document.getElementById('form-modal')).toggle()
 } catch (error) {
   console.error("[CREATE ERROR]", error.message)
 }
@@ -72,15 +72,15 @@ bootstrap.Modal.getInstance(document.getElementById('form-modal2')).toggle()
 
 openCreateModal(){
   
-  document.getElementById('form-button2').classList.remove('visually-hidden')
+  // document.getElementById('form-button').classList.remove('visually-hidden')
   document.getElementById('modal-body-slot').innerHTML = getJobForm()
+  bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal')).toggle()
 }
   
 async openEditModal(id){
-
 const job = ProxyState.jobs.find(j=> j.id == id)
 document.getElementById('modal-body-slot').innerHTML = getJobForm(job)
-bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal2')).toggle()
+bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal')).toggle()
 }
 
  async deleteJobs(id){
@@ -92,7 +92,7 @@ bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal2')).togg
 }
 
   logo(){
-    document.getElementById('form-button2').classList.add('visually-hidden')
+    document.getElementById('form-button').classList.add('visually-hidden')
     document.getElementById('listings').innerHTML = `          <div>
     <img src="129934248-fe999e3e-b167-485c-9457-663c95329182-removebg-preview - Copy.png" width="950"
       height="250" alt="">

@@ -16,7 +16,6 @@ export class CarsController {
   constructor() {
     ProxyState.on('cars', _drawCars)
   }
-
   async showCars() {
     document.getElementById('buttonchange').innerHTML = `<button title='post car' type="button" onclick="app.carsController.openCreateModal()"
     class="btn me-5 btn-secondary visually-hidden" id="form-button">
@@ -30,9 +29,10 @@ export class CarsController {
       document.getElementById('form-button').classList.remove('visually-hidden')
       document.getElementById('modal-body-slot').innerHTML = getCarForm()
     } catch (error) {
-
+      
     }
   }
+
   async createCar(id) {
     try {
       window.event.preventDefault()
